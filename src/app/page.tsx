@@ -16,7 +16,6 @@ const jsonLd = {
     "https://linkedin.com/in/arjunkdasgupta",
     "https://github.com/arjundg",
   ],
-  email: "arjun.k.dasgupta@gmail.com",
   address: {
     "@type": "PostalAddress",
     addressLocality: "London",

@@ -35,11 +35,13 @@ export function Contact() {
           className="flex flex-wrap gap-4"
         >
           <a
-            href="mailto:arjun.k.dasgupta@gmail.com"
+            href="https://linkedin.com/in/arjunkdasgupta"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 px-5 py-2.5 bg-card border border-card-border rounded-lg hover:border-accent/50 transition-colors text-sm font-medium"
           >
             <EnvelopeIcon className="w-4 h-4 text-accent" />
-            <span>arjun.k.dasgupta@gmail.com</span>
+            <span>Message me on LinkedIn</span>
           </a>
           <a
             href="https://linkedin.com/in/arjunkdasgupta"
