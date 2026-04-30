@@ -1,3 +1,9 @@
+export interface NodeDetail {
+  role: string;
+  tech: string;
+  why: string;
+}
+
 export interface Step {
   title: string;
   explanation: string;
@@ -11,6 +17,7 @@ export interface Scenario {
   title: string;
   description: string;
   icon: string;
+  nodeDetails?: Record<string, NodeDetail>;
   steps: Step[];
 }
 
@@ -21,6 +28,48 @@ export const scenarios: Scenario[] = [
     description:
       "Automatically assess whether a document meets regulatory requirements (EU AI Act, GDPR, etc.)",
     icon: "[doc]→[classify]→[verdict]",
+    nodeDetails: {
+      "User": {
+        role: "Uploads policy documents for compliance assessment",
+        tech: "React + Drag-and-drop upload",
+        why: "Low friction onboarding — users shouldn't need training to submit a document.",
+      },
+      "Document Ingestion": {
+        role: "Validates format, extracts text, normalizes encoding",
+        tech: "Azure Document Intelligence / Apache Tika",
+        why: "Handles PDF, DOCX, scanned images. Tika for open-source fallback, Azure DI for production accuracy.",
+      },
+      "Chunker": {
+        role: "Splits documents into semantically meaningful segments",
+        tech: "LangChain RecursiveCharacterTextSplitter (1000 tokens, 200 overlap)",
+        why: "Recursive splitting preserves paragraph boundaries. Overlap prevents context loss at chunk edges.",
+      },
+      "Vector DB": {
+        role: "Stores and retrieves document + regulation embeddings",
+        tech: "Azure AI Search / Qdrant",
+        why: "Azure AI Search for managed enterprise; Qdrant for self-hosted. Both support hybrid (vector + keyword) retrieval.",
+      },
+      "Regulation KB": {
+        role: "Pre-processed regulatory framework as structured embeddings",
+        tech: "EU AI Act articles + GDPR clauses, chunked per requirement",
+        why: "Ground truth must be deterministic — we embed regulations, not rely on LLM training data which may be outdated.",
+      },
+      "Compliance Agent": {
+        role: "Reasons about doc vs. regulation matches, produces assessments",
+        tech: "GPT-4o with structured output (JSON schema enforcement)",
+        why: "Structured output ensures machine-readable verdicts. Agent pattern allows multi-step reasoning with tool calls.",
+      },
+      "LLM": {
+        role: "Core reasoning engine for compliance assessment",
+        tech: "Azure OpenAI GPT-4o (temperature=0.1)",
+        why: "Low temperature for deterministic compliance judgments. GPT-4o balances cost vs. reasoning capability.",
+      },
+      "Report": {
+        role: "Structured compliance report with citations and risk scores",
+        tech: "JSON → PDF/HTML renderer with citation links",
+        why: "Traceability is non-negotiable in regulated industries — every verdict links back to source clause and document section.",
+      },
+    },
     steps: [
       {
         title: "User uploads a document",
@@ -341,6 +390,53 @@ export const scenarios: Scenario[] = [
     description:
       "Reduce AI inference costs by 60%+ through intelligent routing, caching, and model selection.",
     icon: "[req]→[cache|route]→[$|$$|$$$]",
+    nodeDetails: {
+      "Applications": {
+        role: "All services making LLM calls across the organization",
+        tech: "REST APIs with OpenAI-compatible interface",
+        why: "Unified interface means apps don't need to know which model they're hitting — the gateway decides.",
+      },
+      "AI Gateway": {
+        role: "Central proxy for all LLM traffic — routing, throttling, logging",
+        tech: "Custom FastAPI service / Azure API Management",
+        why: "Single control plane for cost, latency, and quality. Same pattern as API gateways but for AI inference.",
+      },
+      "Semantic Cache": {
+        role: "Returns cached answers for semantically similar queries",
+        tech: "Redis + embedding similarity (cosine > 0.95 = hit)",
+        why: "Enterprise queries are repetitive. Cache eliminates 30-40% of LLM calls with zero quality loss.",
+      },
+      "Complexity Classifier": {
+        role: "Scores query complexity to determine model tier",
+        tech: "Fine-tuned DistilBERT classifier (3 classes: simple/medium/complex)",
+        why: "Tiny model (<100ms) that saves $$ by preventing over-provisioning. ROI pays for itself in hours.",
+      },
+      "Small Model": {
+        role: "Handles simple tasks: extraction, summarization, formatting",
+        tech: "GPT-4o-mini / Claude Haiku",
+        why: "10-20x cheaper than frontier models. Handles 60%+ of enterprise queries at equivalent quality.",
+      },
+      "Large Model": {
+        role: "Handles complex reasoning, multi-step analysis, edge cases",
+        tech: "GPT-4o / Claude Sonnet",
+        why: "Reserved for queries that actually need it. Cost is justified by complexity.",
+      },
+      "Prompt Optimizer": {
+        role: "Compresses prompts to reduce token count without quality loss",
+        tech: "LLMLingua / custom template system",
+        why: "20-40% token reduction on average. Fewer tokens = lower cost + faster TTFT.",
+      },
+      "Monitor": {
+        role: "Tracks cost, latency, quality per request for continuous optimization",
+        tech: "Azure Application Insights + custom dashboards",
+        why: "You can't optimize what you don't measure. Per-request attribution reveals which apps burn budget.",
+      },
+      "Dashboard": {
+        role: "Visualizes cost trends, routing decisions, quality scores",
+        tech: "Grafana / Power BI",
+        why: "Leadership needs visibility. Engineers need alerting. Same data, different views.",
+      },
+    },
     steps: [
       {
         title: "Requests arrive at the AI gateway",
