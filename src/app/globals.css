@@ -59,3 +59,19 @@ body {
   background: var(--accent);
   color: white;
 }
+
+/* Signature typographic contrast: section headings get a serif first letter */
+section h2 {
+  position: relative;
+}
+section h2::before {
+  content: "";
+  position: absolute;
+  left: -1rem;
+  top: 50%;
+  width: 3px;
+  height: 60%;
+  transform: translateY(-50%);
+  background: var(--accent);
+  border-radius: 1px;
+}

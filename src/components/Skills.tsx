@@ -6,19 +6,19 @@ import { useRef } from "react";
 const skillCategories = [
   {
     category: "AI & LLM",
-    skills: ["Agentic AI", "RAG", "Multi-Agent Orchestration", "LLMs", "Prompt Engineering", "Fine-Tuning"],
+    skills: ["Agentic AI", "RAG Pipelines", "Multi-Agent Orchestration", "LLMs / Fine-Tuning", "Prompt Engineering"],
   },
   {
     category: "Cloud",
-    skills: ["Azure", "AWS", "Docker", "Kubernetes", "Event-Driven"],
+    skills: ["Azure", "AWS", "Docker / K8s", "Event-Driven Arch.", "Serverless"],
   },
   {
     category: "Engineering",
-    skills: ["C#", "Python", "Java", "Node.js", "React", "REST APIs"],
+    skills: ["C#", "Python", "Java", "Node.js / React", "REST & GraphQL"],
   },
   {
     category: "Leadership",
-    skills: ["Team Building", "Agile", "Stakeholder Management"],
+    skills: ["Team Building", "Agile Delivery", "Stakeholder Mgmt", "Architecture Governance"],
   },
 ];
 
@@ -49,28 +49,29 @@ export function Skills() {
         </motion.h2>
 
         {/* Skills - compact inline grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {skillCategories.map((cat, index) => (
             <motion.div
               key={cat.category}
               initial={{ opacity: 0, y: 15 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: 0.08 * index }}
+              className="bg-card border border-card-border rounded-lg p-4"
             >
-              <h3 className="text-accent font-mono text-sm font-medium mb-2 flex items-center gap-2">
+              <h3 className="text-accent font-mono text-xs font-semibold mb-3 uppercase tracking-wider flex items-center gap-2">
                 <span className="text-accent/50">/</span>
                 {cat.category}
               </h3>
-              <div className="flex flex-wrap gap-1.5">
+              <ul className="space-y-1.5">
                 {cat.skills.map((skill) => (
-                  <span
+                  <li
                     key={skill}
-                    className="text-sm px-2.5 py-1 bg-card border border-card-border rounded-md text-foreground"
+                    className="text-sm text-muted-foreground leading-tight"
                   >
                     {skill}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </motion.div>
           ))}
         </div>

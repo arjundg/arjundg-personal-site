@@ -18,7 +18,7 @@ export function Monogram({ size = 48, className = "", animated = true }: Monogra
     visible: (i: number) => ({
       pathLength: 1,
       opacity: 1,
-      transition: { duration: 0.8, delay: i * 0.15, ease: "easeInOut" },
+      transition: { duration: 0.8, delay: i * 0.15, ease: "easeInOut" as const },
     }),
   };
 
@@ -27,7 +27,7 @@ export function Monogram({ size = 48, className = "", animated = true }: Monogra
     visible: (i: number) => ({
       scale: 1,
       opacity: 1,
-      transition: { duration: 0.3, delay: 0.6 + i * 0.08, ease: "easeOut" },
+      transition: { duration: 0.3, delay: 0.6 + i * 0.08, ease: "easeOut" as const },
     }),
   };
 
