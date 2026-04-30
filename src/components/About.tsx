@@ -41,12 +41,25 @@ export function About() {
           >
             Today at Vialto Partners I architect agentic AI, multi-agent
             orchestration, and RAG pipelines for regulatory compliance —
-            systems where accuracy isn&apos;t optional. Results: 60% platform cost
-            reduction, FEM EMEA Product Innovation Award, an engineering team
-            built from scratch across UK &amp; India. TOGAF 9.2, PMP,
-            multiple AI certifications.
+            systems where accuracy isn&apos;t optional. That&apos;s translated to a
+            60% cost reduction, a FEM EMEA Product Innovation Award, and an
+            engineering team I built from scratch across the UK and India.
           </motion.p>
         </div>
+
+        {/* Inline stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-mono text-accent"
+        >
+          <span>60% cost ↓</span>
+          <span>·</span>
+          <span>FEM EMEA Award</span>
+          <span>·</span>
+          <span>UK + India team</span>
+        </motion.div>
 
         {/* Education inline */}
         <motion.div

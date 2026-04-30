@@ -34,13 +34,11 @@ export default function Home() {
       <Hero />
       <NodePathDivider />
       <About />
-      <NodePathDivider />
       <Experience />
       <NodePathDivider />
       <Projects />
       <NodePathDivider />
       <Skills />
-      <NodePathDivider />
       <Contact />
     </>
   );

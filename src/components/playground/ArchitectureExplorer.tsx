@@ -47,9 +47,11 @@ export function ArchitectureExplorer() {
               <button
                 key={scenario.id}
                 onClick={() => handleSelect(scenario)}
-                className="text-left bg-card border border-card-border rounded-xl p-6 hover:border-accent/50 hover:shadow-lg transition-all group"
+                className="text-left bg-card border-2 border-card-border rounded-lg p-6 hover:border-accent/60 transition-all group"
               >
-                <div className="text-2xl mb-3">{scenario.icon}</div>
+                <div className="font-mono text-xs text-accent bg-muted px-3 py-2 rounded mb-3 inline-block tracking-tight">
+                  {scenario.icon}
+                </div>
                 <h3 className="font-bold text-lg mb-2 group-hover:text-accent transition-colors">
                   {scenario.title}
                 </h3>
@@ -70,8 +72,8 @@ export function ArchitectureExplorer() {
             {/* Header */}
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-xl font-bold flex items-center gap-2">
-                  <span>{selected.icon}</span>
+                <h2 className="text-xl font-bold flex items-center gap-3">
+                  <span className="font-mono text-xs text-accent bg-muted px-2 py-1 rounded">{selected.icon}</span>
                   {selected.title}
                 </h2>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -103,8 +105,11 @@ export function ArchitectureExplorer() {
                 {selected.steps[step].explanation}
               </p>
               {selected.steps[step].pattern && (
-                <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 bg-accent/10 text-accent rounded-full text-sm font-medium">
-                  Pattern: {selected.steps[step].pattern}
+                <div className="mt-4 font-mono text-sm text-accent">
+                  <span className="text-muted-foreground">{"// "}</span>
+                  <span className="uppercase tracking-wider text-xs">pattern</span>
+                  <span className="text-muted-foreground">{" · "}</span>
+                  {selected.steps[step].pattern}
                 </div>
               )}
             </motion.div>

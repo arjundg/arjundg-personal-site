@@ -37,11 +37,11 @@ export function ArchitectureDiagram({ scenario, currentStep }: ArchitectureDiagr
   const height = rows * 120 + 60;
 
   return (
-    <div className="bg-card border border-card-border rounded-xl p-6 overflow-x-auto">
+    <div className="bg-card border-2 border-card-border rounded-lg p-4 overflow-x-auto">
       <svg
         viewBox={`0 0 ${width} ${height}`}
         className="w-full max-w-full"
-        style={{ minHeight: `${Math.max(250, height)}px`, maxHeight: "400px" }}
+        style={{ height: `${height + 20}px` }}
       >
         {/* Edges */}
         <AnimatePresence>

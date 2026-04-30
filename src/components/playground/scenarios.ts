@@ -20,7 +20,7 @@ export const scenarios: Scenario[] = [
     title: "Document Compliance Check",
     description:
       "Automatically assess whether a document meets regulatory requirements (EU AI Act, GDPR, etc.)",
-    icon: "📋",
+    icon: "[doc]→[classify]→[verdict]",
     steps: [
       {
         title: "User uploads a document",
@@ -93,7 +93,7 @@ export const scenarios: Scenario[] = [
     title: "Multi-Agent Research System",
     description:
       "Multiple AI agents collaborate to research, analyze, and synthesize information from diverse sources.",
-    icon: "🤖",
+    icon: "[orch]→[res][anl][syn]→[out]",
     steps: [
       {
         title: "User submits a research query",
@@ -173,7 +173,7 @@ export const scenarios: Scenario[] = [
     title: "Intelligent Document Classification",
     description:
       "Automatically classify and route incoming documents to the right workflow based on content analysis.",
-    icon: "🗂️",
+    icon: "[in]→[parse]→[route]→[a|b|c]",
     steps: [
       {
         title: "Documents arrive from multiple channels",
@@ -262,7 +262,7 @@ export const scenarios: Scenario[] = [
     title: "Enterprise Knowledge Assistant",
     description:
       "A conversational AI that answers questions grounded in company documentation with source attribution.",
-    icon: "💬",
+    icon: "[q]→[retrieve]→[llm]→[cite]",
     steps: [
       {
         title: "User asks a question",
@@ -340,7 +340,7 @@ export const scenarios: Scenario[] = [
     title: "LLM Cost Optimization Pipeline",
     description:
       "Reduce AI inference costs by 60%+ through intelligent routing, caching, and model selection.",
-    icon: "💰",
+    icon: "[req]→[cache|route]→[$|$$|$$$]",
     steps: [
       {
         title: "Requests arrive at the AI gateway",
@@ -415,7 +415,7 @@ export const scenarios: Scenario[] = [
     title: "AI Safety & Guardrails",
     description:
       "Build a robust safety layer that prevents harmful outputs, enforces policies, and maintains compliance.",
-    icon: "🛡️",
+    icon: "[in]→[gate]→[llm]→[gate]→[out]",
     steps: [
       {
         title: "User input arrives",
