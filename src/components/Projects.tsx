@@ -11,7 +11,7 @@ const projects = [
       "AI-powered EU AI Act compliance platform. Helps organizations assess and document AI system compliance with regulatory frameworks.",
     tech: ["React", "Vite", "Node.js", "Azure AI", "GPT-4o", "RAG"],
     link: "https://conformai.vercel.app",
-    featured: true,
+    featured: false,
     mark: "C/AI",
   },
   {
@@ -40,6 +40,15 @@ const projects = [
     link: "#",
     featured: false,
     mark: "QC",
+  },
+  {
+    title: "ArchSketch",
+    description:
+      "Interactive architecture and system design sketching app for diagrams and system design.",
+    tech: ["Next.js", "Vercel", "Design Tool"],
+    link: "https://archsketch.vercel.app/",
+    featured: false,
+    mark: "AS",
   },
 ];
 

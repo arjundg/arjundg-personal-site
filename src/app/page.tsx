@@ -6,11 +6,17 @@ import { Skills } from "@/components/Skills";
 import { Contact } from "@/components/Contact";
 import { NodePathDivider } from "@/components/SystemMotif";
 
+export const metadata = {
+  title: "Arjun K Dasgupta — AI Architect & Tech Lead",
+  description:
+    "Leadership in AI architecture, systems design, and engineering teams building reliable, compliant AI products.",
+};
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Arjun K Dasgupta",
-  jobTitle: "AI Solution Architect & Engineering Leader",
+  jobTitle: "AI Solution Architect, Systems Designer & Engineering Leader",
   url: "https://arjunkdasgupta.com",
   sameAs: [
     "https://linkedin.com/in/arjunkdasgupta",
@@ -33,9 +39,10 @@ export default function Home() {
       <Hero />
       <NodePathDivider />
       <About />
-      <Experience />
       <NodePathDivider />
       <Projects />
+      <NodePathDivider />
+      <Experience />
       <NodePathDivider />
       <Skills />
       <Contact />
